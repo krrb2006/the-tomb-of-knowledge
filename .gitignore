@@ -36,8 +36,5 @@ Thumbs.db
 game/fonts/*.ttf
 game/fonts/*.otf
 
-# Generated silent placeholder audio
-game/audio/night_wind.wav
-game/audio/cat_meow.wav
-game/audio/brick_hit.wav
-game/audio/pencil_write.wav
+# Generated silent placeholder audio (开发阶段自动生成，真实音效替换后可删此行)
+# game/audio/*.wav — 已解除忽略，真实音效可以提交
