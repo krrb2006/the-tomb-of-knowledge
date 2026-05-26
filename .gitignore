@@ -1,0 +1,43 @@
+# Ren'Py generated files
+*.rpyc
+*.rpymc
+cache/
+saves/
+tmp/
+log.txt
+traceback.txt
+errors.txt
+
+# Game cache/save
+game/cache/
+game/saves/
+game/*.rpyc
+game/*.rpymc
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Build outputs
+build/
+dist/
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local/private fonts
+game/fonts/*.ttf
+game/fonts/*.otf
+
+# Generated silent placeholder audio
+game/audio/night_wind.wav
+game/audio/cat_meow.wav
+game/audio/brick_hit.wav
+game/audio/pencil_write.wav
