@@ -1,67 +1,68 @@
-# The Tomb of Knowledge / 知识冢
+# 《知识冢》The Tomb of Knowledge
 
-《知识冢》是一款 Ren'Py 制作的乡土现实恐怖叙事游戏。
+> 一款以乡土记忆为背景的现实主义叙事游戏。恐怖不来自故乡，而来自曾经让人没有选择的处境。
 
-## 游戏简介
+[浏览器试玩 Demo](https://krrb2006.github.io/the-tomb-of-knowledge/) · [源代码](https://github.com/krrb2006/the-tomb-of-knowledge)
 
-女主在初中暑假回到老家，带着生物作业向种了一辈子地的爷爷请教化肥知识。她一直以为爷爷口中的"知识冢"是老人智慧聚集的地方，直到母亲纠正她：那不是"知识"，而是"支死"。
+## 项目简介
 
-支死冢，是过去贫穷年代中，老人被时代和饥饿推向的最后归处。
+玩家跟随一名初中生回到乡下，在生物作业、祖辈口述和旧物线索之间，逐渐听清“知识冢”背后的真实含义。作品尝试把氮磷钾等课堂知识、家庭记忆与代际创伤编织进同一条叙事线，并避免把乡村或贫困本身当作猎奇对象。
 
-本游戏的恐怖并不来自故乡本身，而来自那个让人没有选择的年代。
+当前仓库提供可移植的 Ren'Py 剧情源码与资源，不包含 Ren'Py SDK、打包产物或可再分发的中文字体。浏览器试玩是独立发布的 Demo 构建；修改源码后需要重新用 Ren'Py 构建并部署，试玩页不会自动从 `.rpy` 文件更新。
 
-## 当前版本
+## 项目亮点
 
-v0.3-engine-stable
+- **模块化叙事**：按序章、章节、结局拆分脚本，故事路由由 Ren'Py label 与明确的跳转关系组成。
+- **线索收集**：调查旧麻袋、饭碗、砖块、石刻等可选线索，收集记录集中写入线索本。
+- **状态驱动分支**：恐惧、理解、未来取向与线索数量共同影响结尾；Demo 在第七章形成清晰的试玩断点。
+- **语义化音频层**：剧情只调用 `sfx_cat()`、`bgm_night()` 等事件名；缺失音频安全跳过，单条音轨增益不覆盖玩家的混音器偏好。
+- **开发/发布分离**：调试面板和占位音频生成默认关闭；项目模式集中在 `game/00_project_flags.rpy`。
+- **质量门禁**：零依赖静态验证会检查 label 路由、音频文件引用和发布默认值；GitHub Actions 在 push 与 pull request 上运行。
 
-已完成：
+## 技术栈
 
-- Ren'Py 工程模块化
-- 中文字体支持
-- 线索系统
-- 调试面板
-- Demo 模式
-- 音频占位系统
-- 音频语义封装
-- 章节标题卡
-- 测试清单
+- Ren'Py / Screen Language / Python（游戏内扩展）
+- GitHub Actions + Python 标准库（源码静态检查）
+- GitHub Pages（当前浏览器试玩 Demo）
+
+## 运行源码
+
+1. 安装 [Ren'Py SDK](https://www.renpy.org/latest.html)，在启动器中新建一个 **1280×720** 项目。
+2. 将仓库 `game/` 中的 `.rpy` 文件和 `audio/` 资源复制到新项目的 `game/` 目录。保留启动器生成的 `screens.rpy`、`gui.rpy` 及 GUI 资源；本仓库的 `game/gui.rpy` 仅是占位说明。
+3. 如需完整中文字体，在 `game/fonts/` 放入你有权使用的字体并命名为 `chinese.ttf`；没有字体时游戏会提示并继续运行。
+4. 在启动器点击 **Launch Project**。修改 `game/00_project_flags.rpy` 可在本地开启开发面板、关闭 Demo 断点。
+
+当前模式：`DEMO_BUILD = True`、`DEV_MODE = False`、`AUTO_AUDIO_PLACEHOLDER = False`。正式发布前请先完成素材授权核对，并以目标平台实际构建结果为准。
+
+## 质量检查
+
+本地运行（Python 3.10+，无第三方依赖）：
+
+```bash
+python tools/validate_project.py
+```
+
+该检查能发现静态 label/资源路由错误，但不能替代 Ren'Py 启动器的脚本编译、实际游玩、Web/桌面构建或人工叙事审阅。完整回归项目见 [`TEST_CHECKLIST.txt`](TEST_CHECKLIST.txt)。
 
 ## 项目结构
 
 ```text
 game/
-├── 00_project_flags.rpy
-├── 00_settings_cn.rpy
-├── 01_characters.rpy
-├── 02_assets.rpy
-├── 03_state.rpy
-├── 04_audio_safe.rpy
-├── 05_clues.rpy
-├── 06_dev_tools.rpy
-├── 07_ui_style.rpy
-├── 08_audio_events.rpy
-├── 09_chapter_cards.rpy
-├── 10_start.rpy
-├── 20_story_prologue.rpy
-├── ...
-└── 31_demo_end.rpy
+├── 00_project_flags.rpy     # 开发、Demo、资源占位开关
+├── 01–09_*.rpy              # 角色、资源、状态、音频、线索、UI
+├── 10_start.rpy             # 启动与内容提示
+├── 20–29_story_*.rpy        # 序章、章节与最终选择
+├── 30_endings.rpy           # 三种结局
+└── 31_demo_end.rpy          # Demo 断点
+tools/validate_project.py    # 无依赖静态质量门禁
 ```
 
-## 字体说明
+## 简历描述（可按实际完成情况调整）
 
-本项目不上传中文字体文件。请自行在 `game/fonts/` 下放入支持中文的字体，并命名为：
+**《知识冢》｜Ren'Py 叙事游戏 Demo**
 
-```
-chinese.ttf
-```
+- 使用 Ren'Py 将章节化剧情、可调查线索、状态变量与多结局组织为可维护的叙事系统。
+- 封装容错音频事件，保留玩家音量偏好，并区分开发工具与发布默认配置。
+- 编写标准库静态验证器并接入 GitHub Actions，自动检查剧情目标、音频资源及发布开关。
 
-## 开发状态
-
-当前处于 Demo 开发阶段。
-
-下一目标：
-
-- 优化 Demo 结尾
-- 替换真实音效
-- 添加临时背景图
-- 打包 Windows 试玩版
+> 请只保留你亲自验证过、能够在面试中讲清楚的内容。素材来源/授权信息仍需在发布前补全，详见 [`ASSET_CREDITS.md`](ASSET_CREDITS.md)。

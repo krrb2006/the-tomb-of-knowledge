@@ -1,5 +1,10 @@
 《知识冢》测试清单
 
+自动静态检查（每次提交由 GitHub Actions 执行）：
+[ ] python tools/validate_project.py 通过
+[ ] Ren'Py Launcher 对所有脚本完成 lint / 编译检查
+[ ] 实际试玩覆盖 Demo 断点与三个结局路线
+
 一、基础启动
 [ ] 游戏能正常启动
 [ ] 中文显示正常

@@ -33,4 +33,20 @@ label demo_end:
 
     centered "恐怖的是那个让人没有选择的年代。"
 
-    return
+    $ demo_clue_count = clue_count()
+
+    scene bg memory
+    with fade
+
+    centered "知识冢 · 可试玩版本"
+
+    narrator "这一程，你在故事里留下了 [demo_clue_count] 条线索。"
+
+    narrator "感谢你走到这里。更多故事仍在田埂另一端。"
+
+    menu:
+        "重新开始这段 Demo":
+            $ renpy.full_restart()
+
+        "结束试玩，回到标题":
+            return

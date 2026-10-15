@@ -7,8 +7,8 @@ init python:
         loadable = renpy.loadable(filename)
         if loadable:
             try:
-                renpy.sound.play(filename)
-                renpy.sound.set_volume(volume)
+                # Relative track gain respects the player's sound-mixer setting.
+                renpy.sound.play(filename, relative_volume=volume)
             except Exception as e:
                 renpy.notify("音效播放失败: {}".format(filename))
         else:
@@ -18,8 +18,8 @@ init python:
         loadable = renpy.loadable(filename)
         if loadable:
             try:
-                renpy.music.play(filename, loop=True)
-                renpy.music.set_volume(volume)
+                # Do not mutate the persistent music-channel preference.
+                renpy.music.play(filename, loop=True, relative_volume=volume)
             except Exception as e:
                 renpy.notify("音乐播放失败: {}".format(filename))
         else:
