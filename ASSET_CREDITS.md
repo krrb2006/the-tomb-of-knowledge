@@ -27,12 +27,17 @@ replace the file with an asset whose license is clear.
 - Source / author / license: **unverified — release blocker**
 - Modification history: not recorded
 
+## Visual Assets
+
+### `game/images/bg/` and `game/images/ui/`
+- Source: restored byte-for-byte from the project's previous public web demo (`gh-pages`, commit `5b87440`)
+- Original creator/license: not recorded in the prior deployment; redistribution status remains **unverified**
+- Modification history: original image files restored without edits
+
 ## Font
 
 ### `game/fonts/chinese.ttf`
-- Name: Noto Sans SC (variable TrueType font)
-- Source: https://github.com/google/fonts/tree/main/ofl/notosanssc
-- Upstream project: https://github.com/notofonts/noto-cjk
-- License: SIL Open Font License 1.1; full text is bundled at `game/fonts/OFL.txt`
-- Purpose: ensure Chinese dialogue and interface text render in web and desktop builds
-- Modification history: unmodified upstream font, renamed to `chinese.ttf` for the project
+- Name: STXingkai (华文行楷), identified from the font's embedded metadata
+- Source: restored byte-for-byte from the project's previous public web demo (`gh-pages`, commit `5b87440`)
+- Original creator/license: not recorded in the prior deployment; redistribution status remains **unverified**
+- Modification history: original font restored from the prior build and renamed to the lowercase path used by the game

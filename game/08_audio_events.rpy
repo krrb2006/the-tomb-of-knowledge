@@ -4,16 +4,16 @@
 
 init python:
     def sfx_cat():
-        safe_play_sound("audio/cat_meow.mp3", volume=0.6)
+        safe_play_sound("audio/cat_meow.wav")
 
     def sfx_brick():
-        safe_play_sound("audio/brick_hit.mp3", volume=0.5)
+        safe_play_sound("audio/brick_hit.wav")
 
     def sfx_pencil():
-        safe_play_sound("audio/pencil_write.mp3", volume=0.4)
+        safe_play_sound("audio/pencil_write.wav")
 
     def bgm_night():
-        safe_play_music("audio/night_wind.mp3", volume=0.35)
+        safe_play_music("audio/night_wind.wav")
 
     def stop_bgm():
         safe_stop_music()

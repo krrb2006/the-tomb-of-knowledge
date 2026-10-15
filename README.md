@@ -8,7 +8,7 @@
 
 玩家跟随一名初中生回到乡下，在生物作业、祖辈口述和旧物线索之间，逐渐听清“知识冢”背后的真实含义。作品尝试把氮磷钾等课堂知识、家庭记忆与代际创伤编织进同一条叙事线，并避免把乡村或贫困本身当作猎奇对象。
 
-当前仓库提供可移植的 Ren'Py 剧情源码与资源，不包含 Ren'Py SDK 或打包产物；仓库已附带 SIL OFL 授权的 Noto Sans SC 字体，确保中文对白能在干净环境及浏览器构建中正常显示。浏览器试玩是独立发布的 Demo 构建；修改源码后需要重新用 Ren'Py 构建并部署，试玩页不会自动从 `.rpy` 文件更新。
+当前仓库提供 Ren'Py 剧情源码、上一版试玩中的原始配图与华文行楷字体，以及音频资源；不包含 Ren'Py SDK 或打包产物。浏览器试玩是独立发布的 Demo 构建；修改源码后需要重新用 Ren'Py 构建并部署，试玩页不会自动从 `.rpy` 文件更新。
 
 ## 项目亮点
 
@@ -29,7 +29,7 @@
 
 1. 安装 [Ren'Py SDK](https://www.renpy.org/latest.html)，在启动器中新建一个 **1280×720** 项目。
 2. 将仓库 `game/` 中的 `.rpy` 文件和 `audio/` 资源复制到新项目的 `game/` 目录。保留启动器生成的 `screens.rpy`、`gui.rpy` 及 GUI 资源；本仓库的 `game/gui.rpy` 仅是占位说明。
-3. 中文字体已随项目提供于 `game/fonts/chinese.ttf`，并附有 `game/fonts/OFL.txt` 授权文本；无需额外下载。
+3. `game/fonts/chinese.ttf` 是旧版试玩中的华文行楷字体；场景配图也已恢复到 `game/images/`。
 4. 在启动器点击 **Launch Project**。修改 `game/00_project_flags.rpy` 可在本地开启开发面板、关闭 Demo 断点。
 
 当前模式：`DEMO_BUILD = True`、`DEV_MODE = False`、`AUTO_AUDIO_PLACEHOLDER = False`。正式发布前请先完成素材授权核对，并以目标平台实际构建结果为准。
@@ -51,7 +51,9 @@ game/
 ├── 00_project_flags.rpy     # 开发、Demo、资源占位开关
 ├── 01–09_*.rpy              # 角色、资源、状态、音频、线索、UI
 ├── 10_start.rpy             # 启动与内容提示
-├── fonts/                   # Noto Sans SC 中文字体及 OFL 授权
+├── fonts/                   # 旧版试玩的华文行楷字体
+├── images/bg/               # 旧版试玩场景配图
+├── images/ui/               # 旧版试玩标题/界面配图
 ├── 20–29_story_*.rpy        # 序章、章节与最终选择
 ├── 30_endings.rpy           # 三种结局
 └── 31_demo_end.rpy          # Demo 断点
