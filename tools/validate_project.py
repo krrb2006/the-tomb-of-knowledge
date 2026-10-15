@@ -46,6 +46,12 @@ def validate() -> tuple[list[str], dict[str, int]]:
         if not (GAME / target).is_file():
             errors.append(f"Missing audio asset '{target}' referenced in {path.relative_to(ROOT)}")
 
+    chinese_font = GAME / "fonts" / "chinese.ttf"
+    if not chinese_font.is_file() or chinese_font.stat().st_size < 1024:
+        errors.append("Missing bundled Simplified Chinese font: game/fonts/chinese.ttf")
+    elif not (GAME / "fonts" / "OFL.txt").is_file():
+        errors.append("Missing license for the bundled Simplified Chinese font: game/fonts/OFL.txt")
+
     flags = (GAME / "00_project_flags.rpy").read_text(encoding="utf-8-sig")
     for flag, expected in (("DEV_MODE", "False"), ("DEMO_BUILD", "True"), ("AUTO_AUDIO_PLACEHOLDER", "False")):
         if not re.search(rf"\b{flag}\s*=\s*{expected}\b", flags):
@@ -76,6 +82,7 @@ def main() -> int:
     print(f"  {stats['script_files']} Ren'Py source files")
     print(f"  {stats['labels']} unique labels - {stats['story_references']} story references")
     print(f"  {stats['audio_references']} audio references resolve")
+    print("  bundled Simplified Chinese font and license are present")
     print("  release defaults and audio mixer behavior are safe")
     return 0
 

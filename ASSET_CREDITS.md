@@ -26,3 +26,13 @@ replace the file with an asset whose license is clear.
 ### `game/audio/pencil_write.mp3`
 - Source / author / license: **unverified — release blocker**
 - Modification history: not recorded
+
+## Font
+
+### `game/fonts/chinese.ttf`
+- Name: Noto Sans SC (variable TrueType font)
+- Source: https://github.com/google/fonts/tree/main/ofl/notosanssc
+- Upstream project: https://github.com/notofonts/noto-cjk
+- License: SIL Open Font License 1.1; full text is bundled at `game/fonts/OFL.txt`
+- Purpose: ensure Chinese dialogue and interface text render in web and desktop builds
+- Modification history: unmodified upstream font, renamed to `chinese.ttf` for the project
