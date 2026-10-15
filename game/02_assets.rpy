@@ -7,7 +7,7 @@ image bg black = Solid("#050505")
 init python:
     def safe_image(name, path, fallback_color):
         if renpy.loadable(path):
-            renpy.image(name, Transform(path, fit="cover"))
+            renpy.image(name, Transform(path, fit="contain"))
         else:
             renpy.image(name, Solid(fallback_color))
 
